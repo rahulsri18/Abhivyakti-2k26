@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;500;600;700&family=Cinzel:wght@400;700&display=swap');
+
+:root {
+  /* Vintage Beige Theme */
+  --color-bg: #e8ded1;
+  /* Warm Beige/Paper Color */
+  --color-text: #4a3728;
+  /* Dark Earthy Brown */
+  --color-text-light: #6d5843;
+  --color-primary: #8b4513;
+  /* Saddle Brown */
+  --color-secondary: #c19a6b;
+  /* Camel/Tan */
+  --color-accent: #cd853f;
+  /* Peru */
+  --color-leaf: #556b2f;
+  /* Dark Olive Green */
+  --color-cream: #fffaf0;
+  /* For cards */
+
+  /* Fonts */
+  --font-main: 'Outfit', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-accent: 'Dancing Script', cursive;
+
+  --transition-smooth: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #dccdb3;
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  background-blend-mode: multiply, normal;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+/* Glassmorphism Utility - Light/Warmer */
+.glass {
+  background: rgba(255, 250, 240, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(74, 55, 40, 0.1);
+}
+
+/* Organic Shapes */
+.blob {
+  position: absolute;
+  z-index: -1;
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: var(--transition-smooth);
+}
+
+.section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(74, 55, 40, 0.2), transparent);
+  margin: 4rem auto;
+  width: 80%;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  margin-top: -2.5rem;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+/* Event Schedule Styles */
+.schedule-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0.5rem 0;
+  min-height: 250px;
+  background-image: var(--schedule-bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.8s ease-in-out;
+  padding: clamp(1rem, 3vw, 1.5rem) 0;
+  border-radius: clamp(16px, 3vw, 24px);
+  overflow: hidden;
+}
+
+.schedule-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+      rgba(74, 55, 40, 0.85) 0%,
+      rgba(139, 69, 19, 0.7) 100%);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.schedule-container {
+  position: relative;
+  z-index: 2;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.day-hero-info {
+  text-align: center;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+  color: white;
+}
+
+.day-subtitle {
+  display: block;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: clamp(2px, 0.5vw, 4px);
+  color: var(--color-accent);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  text-transform: uppercase;
+}
+
+.day-hero-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  color: white;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-heading);
+}
+
+.day-hero-description {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  opacity: 0.9;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 0 1rem;
+}
+
+.schedule-tabs {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  margin-top: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.tab-btn {
+  padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1.2rem, 3vw, 2rem);
+  border-radius: 50px;
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: clamp(140px, 25vw, 180px);
+}
+
+.tab-btn.active {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+  transform: translateY(-3px);
+}
+
+.tab-date {
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  position: relative;
+  padding-left: clamp(2rem, 3vw, 2.5rem);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, white, transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.85rem;
+  top: 1.5rem;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  border: 4px solid var(--color-primary);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  z-index: 2;
+}
+
+
+.time-tag {
+  flex: 0 0 clamp(140px, 20vw, 180px);
+  font-weight: 700;
+  color: white;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  padding: 1.4rem 0;
+  text-align: right;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+
+.schedule-card {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  border-left: 4px solid var(--color-primary);
+}
+
+.schedule-card:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-label {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  margin-bottom: 0.6rem;
+}
+
+.schedule-card h3 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  margin-bottom: 0.4rem;
+  color: var(--color-primary);
+}
+
+.schedule-card p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--color-text);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .timeline-item::before {
+    left: -1.85rem;
+    top: 0.4rem;
+  }
+
+  .time-tag {
+    text-align: left;
+    flex: none;
+    padding: 0;
+    margin-bottom: 0.1rem;
+    font-size: 0.9rem;
+  }
+
+  .schedule-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+    width: 100%;
+    padding: clamp(1rem, 2vw, 1.2rem);
+  }
+
+  .day-hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .day-hero-description {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 90, 43, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 90, 43, 0.4);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+/* Star Night Section Styles */
+.star-night-section {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #050505;
+  color: white;
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 2vw, 2%);
+  border-radius: clamp(16px, 3vw, 24px);
+}
+
+.star-night-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.star-night-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 8s linear;
+  filter: brightness(0.8) saturate(1.2);
+}
+
+.star-night-bg.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.star-night-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      rgba(5, 5, 5, 0.8) 0%,
+      rgba(0, 51, 102, 0.4) 50%,
+      rgba(5, 5, 5, 0.9) 100%);
+  z-index: 1;
+}
+
+.star-night-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+
+
+.star-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: clamp(3px, 0.8vw, 5px);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.artist-name {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  font-family: var(--font-heading);
+}
+
+.concert-tagline {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 12px;
+  min-width: 90px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.count-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.count-label {
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.3vw, 2px);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+.concert-details {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.concert-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 500;
+}
+
+.concert-info-item .icon {
+  font-size: 1.5rem;
+}
+
+.concert-btn {
+  padding: 1.2rem 3rem;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.entry-notice {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .countdown-container {
+    gap: 1rem;
+  }
+
+  .countdown-item {
+    padding: 1rem;
+    min-width: 80px;
+  }
+
+  .count-number {
+    font-size: 1.8rem;
+  }
+
+  .concert-details {
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    align-items: center;
+  }
+
+  .star-night-section {
+    padding: clamp(1.5rem, 3vw, 2rem) 5%;
+  }
+
+  .concert-btn {
+    padding: clamp(0.9rem, 2vw, 1rem) clamp(2rem, 5vw, 2.5rem);
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+  }
+}
